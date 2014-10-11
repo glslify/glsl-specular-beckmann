@@ -27,7 +27,7 @@ void main() {\n\
   vec3 position = vec3(normal.xy, normal.z+5.0);\
   vec3 lightDir = normalize(lightPosition - position);\
   vec3 eyeDir = normalize(-position);\
-  float power = specular(lightDir, eyeDir, normal, 23.0);\n\
+  float power = specular(lightDir, eyeDir, normal, 0.1);\n\
   if(r > 1.0) {\n\
     gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);\n\
   } else {\n\

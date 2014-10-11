@@ -4,16 +4,16 @@ float beckmannSpecular(
   vec3 lightDirection,
   vec3 viewDirection,
   vec3 surfaceNormal,
-  float shininess) {
+  float roughness) {
 
   vec3 H = normalize(lightDirection + viewDirection);
-  float NdotH = dot(N, H);
+  float NdotH = max(dot(surfaceNormal, H), 0.0);
   float cos2Alpha = NdotH * NdotH;
-  float tan2Alpha = (1.0 - cos2Alpha) / cos2Alpha;
-  float shininess2 = shininess * shininess;
-  float denom = PI * shininess2 * cos2Alpha * cos2Alpha;
+  float tan2Alpha = (cos2Alpha - 1.0) / cos2Alpha;
+  float roughness2 = roughness * roughness;
+  float denom = PI * roughness2 * cos2Alpha * cos2Alpha;
 
-  return exp(-tan2Alpha / shininess2) / denom;
+  return exp(tan2Alpha / roughness2) / denom;
 }
 
 #pragma glslify: export(beckmannSpecular)
