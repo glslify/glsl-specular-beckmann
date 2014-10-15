@@ -1,6 +1,6 @@
 {
   "name": "glsl-specular-beckmann",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Beckmann specular distribution for GLSL",
   "main": "index.js",
   "directories": {
