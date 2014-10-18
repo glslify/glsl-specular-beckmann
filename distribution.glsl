@@ -3,7 +3,7 @@ float beckmannDistribution(float x, float roughness) {
   float cos2Alpha = NdotH * NdotH;
   float tan2Alpha = (cos2Alpha - 1.0) / cos2Alpha;
   float roughness2 = roughness * roughness;
-  float denom = 3.141592653589793 * roughness2 * cos2Alpha * cos2Alpha;
+  float denom = max(3.141592653589793 * roughness2 * cos2Alpha * cos2Alpha, 0.00001);
   return exp(tan2Alpha / roughness2) / denom;
 }
 
